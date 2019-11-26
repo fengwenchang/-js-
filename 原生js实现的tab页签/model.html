@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="leftMenu">
+            <ul id="leftMenu">
+                <li class="active" target="content0">百度百科</li>
+                <li target="content1">百度百科</li>
+                <li target="content2">百度百科</li>
+                <li target="content3">百度百科</li>
+                <li target="content4">百度百科</li>
+            </ul>
+        </div>
+        <div class="rightContent">
+            <div id="content0" class="show fadeUp">0</div>
+            <div id="content1" class="hide">1</div>
+            <div id="content2" class="hide">2</div>
+            <div id="content3" class="hide">3</div>
+            <div id="content4" class="hide">4</div>
+        </div>
+    </div>
+</body>
+<style>
+    .container {
+        width: 100%;
+        display: flex;
+    }
+
+    .leftMenu {
+        width: 180px;
+        height: 100%;
+    }
+
+    .leftMenu ul {
+        list-style: none;
+    }
+
+    .leftMenu ul li {
+        line-height: 40px;
+        height: 40px;
+        color: #303133;
+        padding: 0 20px;
+        text-align: right;
+        cursor: pointer;
+        border-right: 2px solid #ddd;
+    }
+
+    .leftMenu ul li:hover {
+        color: #409eff;
+    }
+
+    .leftMenu ul li.active {
+        color: #409eff;
+        border-right: 2px solid #409eff;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .rightContent {
+        padding: 20px;
+    }
+    .fadeUp{
+       animation: slideUp 1s ;
+    }
+    @keyframes slideUp {
+        from {
+            transform:translateY(50px)
+        }
+        to{
+            transform:translateY(0px)
+        }
+    }
+</style>
+<script>
+    function elem(elem) {
+        return document.querySelectorAll(elem)
+    }
+    window.onload = function () {
+        var leftMenu = elem('#leftMenu');
+        var otherLi = elem('#leftMenu li');
+        var rightContents = elem('.rightContent div');
+        console.log(otherLi)
+        leftMenu[0].onclick = function (e) {
+            var target = e.target;
+
+            console.log(target)
+            for (var i = 0; i < otherLi.length; i++) {
+                otherLi[i].className = ''
+            }
+            if (target.nodeName.toLowerCase() === 'li') {
+                target.className = 'active'
+                let contentId = target.getAttribute('target')
+                var contentDiv = elem('#' + contentId);
+                for (var j = 0; j < rightContents.length; j++) {
+                    rightContents[j].className = 'hide'
+                }
+
+                contentDiv[0].className = 'show fadeUp'
+            }
+        }
+    }
+
+</script>
+
+</html>
