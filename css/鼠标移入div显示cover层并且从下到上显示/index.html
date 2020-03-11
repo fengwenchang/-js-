@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css鼠标移入DIV平滑显示文字</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .box {
+            width: 200px;
+            height: 300px;
+            position: relative;
+        }
+
+        .img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: url(./demo.jpg) no-repeat center center;
+        }
+
+        .cover {
+            position: absolute;
+            bottom: 0;
+            display: none;
+            z-index: 10;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: #fff;
+        }
+
+        .box:hover .cover {
+            display: block;
+            animation: mymove 1s;
+            animation-fill-mode : forwards;
+        }
+
+        @keyframes mymove {
+            0% {
+                height: 1px;
+            }
+
+            100% {
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="img">
+                图片
+            </div>
+            <div class="cover">
+                这是一段文字，一段长文字，常常的文字哈哈哈
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
