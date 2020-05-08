@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 题目
+    @param rs对象，格式为{h,d},h/d分别是一个数组，表示一张表的表头字段和内容
+    @return 一个对象，内容是键值对
+    示例：
+    var rs = {
+        h:["id","name"],
+        d:[[100,"Tom"],[101,"Jane"],[102,"Tom"]]
+    }
+    var hash = rs2MultiHash(rs,"name")
+    结果为：
+    hash = {
+        "Tom":[{id:100,name:"Tom"},{id:102,name:"Tom"}],
+        "Jane":[{id:101,name:"Jane"}]
+    }
+    -->
+    <script>
+    var rs = {
+        h:["id","name"],
+        d:[[100,"Tom"],[101,"Jane"],[102,"Tom"]]
+    }
+    var hash = rs2MultiHash(rs,"id")
+    function rs2MultiHash(arr,key){
+        const header = rs.h;
+        const content = rs.d
+        const result = {}
+        // 先拼接出来所有的
+        const result1 = []
+        content.forEach((item,index)=>{
+            const obj = {}
+            header.forEach((item1,index1)=>{
+                obj[item1] = content[index][index1]
+            })
+            result1.push(obj)
+        })
+        // 找出name并去重
+        const groupByKey = result1.map((item,index)=>{
+            return item[key]
+        })
+        // 按name去过滤
+        const uniqueKey = Array.from(new Set(groupByKey))
+        var result2 = {}
+        uniqueKey.forEach((item,index)=>{
+            result2[item] = result1.filter((item1,index1)=>{
+                return item1[key] === item
+            })
+        })
+        console.log(result2)
+    }
+    </script>
+</body>
+</html>
