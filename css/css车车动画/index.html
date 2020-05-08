@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css鼠标移入DIV平滑显示文字</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .car-content {
+            width: 421px;
+            height: 270px;
+            background: url(./w.jpg) no-repeat 0 0;
+            position: relative;
+        }
+
+        .car {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotateY(180deg);
+            animation: car 3s ease infinite;
+            animation-direction:alternate;
+            /* animation-fill-mode: forwards; */
+        }
+
+        @keyframes car {
+            0% {
+                top: 0;
+                left: 0;
+            }
+
+            10% {
+                top: 163px;
+                left: 0;
+                /* transform-origin: 176px 98px 0px;
+                transform: rotate(180deg); */
+            }
+            15% {
+                top: 199px;
+                left: 38px;
+            }
+            20% {
+                /* transform-origin: 0 0; */
+                /* transform: rotate(180deg); */
+                top: 216px;
+                left: 78px;
+            }
+
+            30% {
+                top: 200px;
+                left: 111px;
+            }
+
+            40% {
+                top: 171px;
+                left: 154px;
+            }
+
+            50% {
+                top: 58px;
+                left: 164px;
+            }
+            60% {
+                top: 180px;
+                left: 164px;
+            }
+            70% {
+                top: 218px;
+                left: 210px;
+            }
+            80% {
+                top: 210px;
+                left: 260px;
+            }
+            90% {
+                top: 178px;
+                left: 300px;
+            }
+            100% {
+                top: 0px;
+                left: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="car-content">
+            <div class="car" id="car">
+                <img src="./car.png" alt="移动的小车">
+            </div>
+        </div>
+    </div>
+    <script>
+        // 先找到需要定位的位置坐标 然后控制位置？
+        // var $car = document.getElementById("car");
+        // $car.onmouseover = function(){
+        //  var left = parseInt($car.style.left);
+        //  var top = parseInt($car.style.top);
+        //  var bottom = parseInt($car.style.bottom);
+        //  var right = parseInt($car.style.right);
+        // if(left ==  0){
+        //     $car
+        // }
+    //  }
+    </script>
+</body>
+
+</html>

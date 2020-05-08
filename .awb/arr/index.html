@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+    // var rs = {
+    //     h: ["id", "name"], 
+    //     d: [ [100, "Tom"], [101, "Jane"] ] 
+    // };
+    // var result =[]
+    // rs.d.forEach((item,index)=>{
+    //     const obj = {}
+    //     item.forEach((item1,index1)=>{
+    //             obj[rs.h[index1]] = item1
+    //     })
+    //     result.push(obj)
+    // })
+    // console.log(result)
+
+    
+    function fun(rs){
+    let item = rs.d;
+    let arr = [];
+    let head = rs.h;
+    item.forEach((v, index) => {
+        const obj ={}
+        head.forEach((v1, index2) => {
+            obj[v1] = item[index][index2];
+        })
+        arr.push(obj)
+    })
+    console.log(arr);
+
+}
+var rs = {
+ h: ["id", "name"], 
+ d: [ [100, "Tom"], [101, "Jane"] ] 
+};
+fun(rs);
+    </script>
+</body>
+</html>
